@@ -41,3 +41,33 @@ document.querySelectorAll('[data-join-soon]').forEach(button => {
     'Membership will open after our first activity with NUSX. Stay tuned for registration details.'
   ));
 });
+
+// A bounded, keyboard-accessible graphic; page scrolling remains available on touch.
+const ticket = document.querySelector('[data-drag-ticket]');
+if (ticket) {
+  let origin = null, position = { x: 0, y: 0 };
+  const clamp = value => Math.max(-35, Math.min(35, value));
+  const renderTicket = () => { ticket.style.translate = `${position.x}px ${position.y}px`; };
+  ticket.addEventListener('pointerdown', event => {
+    if (event.button !== 0) return;
+    origin = { x: event.clientX - position.x, y: event.clientY - position.y };
+    ticket.setPointerCapture(event.pointerId);
+    ticket.classList.add('dragging');
+  });
+  ticket.addEventListener('pointermove', event => {
+    if (!origin) return;
+    position = { x: clamp(event.clientX - origin.x), y: clamp(event.clientY - origin.y) };
+    renderTicket();
+  });
+  const endDrag = () => { origin = null; ticket.classList.remove('dragging'); };
+  ticket.addEventListener('pointerup', endDrag);
+  ticket.addEventListener('pointercancel', endDrag);
+  ticket.addEventListener('lostpointercapture', endDrag);
+  ticket.addEventListener('keydown', event => {
+    const steps = { ArrowLeft: [-5, 0], ArrowRight: [5, 0], ArrowUp: [0, -5], ArrowDown: [0, 5] };
+    if (!steps[event.key]) return;
+    event.preventDefault();
+    position = { x: clamp(position.x + steps[event.key][0]), y: clamp(position.y + steps[event.key][1]) };
+    renderTicket();
+  });
+}
