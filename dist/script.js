@@ -59,3 +59,12 @@ filters.forEach(button => button.addEventListener('click', () => {
   });
   document.querySelector('.filter-status').textContent = `Showing ${selected === 'all' ? 'all ' : ''}${count} event${count === 1 ? '' : 's'}`;
 }));
+
+// Joining stays closed until the first NUSX activity.
+document.querySelectorAll('[data-join-soon]').forEach(button => {
+  button.addEventListener('click', () => showInfo(
+    'MEMBERSHIP',
+    'Coming Soon',
+    'Membership will open after our first activity with NUSX. Stay tuned for registration details.'
+  ));
+});
