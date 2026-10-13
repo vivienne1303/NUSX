@@ -41,7 +41,7 @@ const events = [
 ];
 document.querySelectorAll('[data-event]').forEach(button => button.addEventListener('click', () => showInfo(...events[Number(button.dataset.event)])));
 document.querySelector('#view-events')?.addEventListener('click', () => { document.querySelector('#events-status').hidden = false; document.querySelector('.event-grid').scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' }); });
-document.querySelector('#join-button')?.addEventListener('click', () => showInfo('MEMBERSHIP', 'Your next chapter starts here.', 'Membership is open to all tertiary students in Singapore and worldwide. The membership registration link has not been provided yet. Please check back for the official application details.'));
+document.querySelector('#join-button')?.addEventListener('click', () => showInfo('MEMBERSHIP', 'Your next chapter starts here.', 'Membership is open to all tertiary students in Singapore and worldwide. Membership will open after our first activity with NUSX. Registration is not active yet.'));
 document.querySelector('.footer-contact')?.addEventListener('click', () => showInfo('CONTACT NUSX CLUB', 'Let’s connect.', 'Official club contact details will be added here once available. You can also visit our partner at nusx.edu.sg using the link in the footer.'));
 
 const filters = document.querySelectorAll('[data-filter]');

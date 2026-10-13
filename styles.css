@@ -4,3 +4,5 @@
 .icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;flex-shrink:0;overflow:visible}.mini-stars{display:inline-flex;gap:0;letter-spacing:0}.mini-stars .icon{width:.8em;height:.8em}.globe-star,.community-symbol,.join-star{line-height:1}.globe-star .icon,.community-symbol .icon,.join-star .icon{display:block}.menu-toggle .icon,.dialog-close .icon{display:block}
 
 .footer-main{grid-template-columns:2.2fr 1fr auto}@media(max-width:600px){.footer-main{grid-template-columns:1fr 1fr}}
+
+.button:disabled{cursor:default;background:#31342b;color:#c4c8ba;box-shadow:none;transform:none}.button:disabled:hover{box-shadow:none;transform:none}
